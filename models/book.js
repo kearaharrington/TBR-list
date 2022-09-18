@@ -12,16 +12,12 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       models.book.belongsTo(models.author)
-    }
-
-    getBookDetails() {
-      return this.title + this.author
+      models.book.hasMany(models.bookComment)
     }
   }
   book.init({
     title: DataTypes.STRING,
-    author: DataTypes.STRING,
-    bookId: DataTypes.INTEGER
+    author: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'book',
