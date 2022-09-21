@@ -1,0 +1,12 @@
+<h1>Books</h1>
+
+<% books.forEach(function(book) { %>
+  <div>
+    <h2>
+      <a href="/books/<%= book.id %>">
+        <%= book.title %>
+        <%= book.authorName %>
+      </a>
+    </h2>
+  </div>
+<% }) %>

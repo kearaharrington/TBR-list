@@ -12,12 +12,14 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       models.book.belongsTo(models.author)
+      // models.book.belongsToMany(models.tbrlist, { through: user })
+      // models.book.belongstoMany(models.readList, { through: User })
       models.book.hasMany(models.bookComment)
     }
   }
   book.init({
     title: DataTypes.STRING,
-    author: DataTypes.STRING
+    authorName: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'book',

@@ -26,7 +26,8 @@ const options = {
 };
 
 axios.request(options).then(function (response) {
-	console.log(response.data);
+	// console.log(response.data);
+  console.log(response.data.results[0].image); // displays image url only for first result
 }).catch(function (error) {
 	console.error(error);
 });
