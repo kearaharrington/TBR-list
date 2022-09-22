@@ -11,8 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      models.readList.belongsTo(models.user)
-      models.readList.hasMany(models.book)
+      models.TBRList.belongsTo(models.user)
+      models.TBRList.hasMany(models.book)
     }
   }
   TBRList.init({
