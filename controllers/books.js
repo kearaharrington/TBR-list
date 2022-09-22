@@ -25,13 +25,20 @@ router.post('/', (req, res) => {
     .catch((error) => {
         res.status(404).render('404')
     });
-    db.author.create({
-        name: req.body.authorName
-    })
-    .then((book) => {
-        res.redirect('/books')
-    })
-    .catch((error) => {
-        res.status(404).render('404')
-    });
+    // db.author.create({
+    //     name: req.body.authorName
+    // })
+    // .then((book) => {
+    //     res.redirect('/books')
+    // })
+    // .catch((error) => {
+    //     res.status(404).render('404')
+    // });
 })
+
+// GET route new books
+router.get('/new', (req,res) => {
+    res.render('books/new')
+})
+
+module.exports = router;

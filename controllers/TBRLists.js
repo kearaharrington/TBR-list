@@ -2,19 +2,29 @@ let express = require('express');
 let db = require('../models');
 let router = express.Router();
 
-// GET route
 
 
 // POST route
 router.post('/', (req, res) => {
     db.TBRList.create({
+        // include: [db.user],
         title: req.body.listTitle,
-        userId: req.user.id
+        // userId: req.
     })
     .then((TBRList) => {
-        res.redirect('/TBRLists/:id')
+        res.redirect('tbrLists/:id')
     })
     .catch((error) => {
-        res.status(404).render('404')
+        res.status(400).render('main/404')
     });
 })
+
+// GET route for new list
+router.get('/new', (req, res) => {
+    res.render('tbrLists/new')
+    .catch((error) => {
+        res.status(400).render('main/404')
+    });
+})
+
+module.exports = router;
