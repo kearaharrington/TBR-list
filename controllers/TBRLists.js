@@ -8,11 +8,11 @@ let router = express.Router();
 // POST route
 router.post('/', isLoggedIn, (req,res) => {
     db.tbrList.create({
-        title: req.body.listTitle,
+        name: req.body.name,
         userId: req.user.id
     })
     .then((tbrList) => {
-        res.redirect('tbrLists/:id')
+        res.redirect('profile')
     })
     .catch((error) => {
         res.status(400).render('main/404')
@@ -36,7 +36,7 @@ router.get('/:id', isLoggedIn, (req,res) => {
         }
     })
     .then(tbrList => {
-        res.render('/tbrLists/:id', {tbrList}
+        res.render('tbrLists/show', {tbrList}
         )})
         .catch((error) => {
             console.log(error)

@@ -65,7 +65,7 @@ router.get('/:id', isLoggedIn, (req,res) => {
         },
         db.author]
     })
-    .then(book=> {
+    .then(book => {
         res.render('books/details', {book})
     })
     .catch((error) => {
