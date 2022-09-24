@@ -6,6 +6,7 @@ const session = require('express-session');
 const flash = require('connect-flash');
 const passport = require('./config/ppConfig');
 const isLoggedIn = require('./middleware/isLoggedIn');
+const db = require('./models');
 
 // const HAPIbooks = 'hapi-books.p.rapidapi.com';
 // const HAPIKey = process.env.HAPIBooksKey;
@@ -48,11 +49,28 @@ app.get('/', (req, res) => {
 // access to all of our auth routes GET /auth/login, GET /auth/signup, POST routes
 app.use('/auth', require('./controllers/auth'));
 app.use('/tbrLists', require('./controllers/tbrLists'));
-app.use('/books', require('./controllers/books'))
+app.use('/books', require('./controllers/books'));
+app.use('/authors', require('./controllers/authors'));
 
 app.get('/profile', isLoggedIn, (req, res) => {
-  const { id, name, email } = req.user.get(); 
-  res.render('profile', { id, name, email });
+  // const { id, name, email } = req.user.get(); 
+  db.user.findOne({
+    where: {
+      id: req.user.id
+    },
+    include: [db.tbrList]
+  })
+  .then(user => {
+    res.render('profile', {
+      user: {
+        user,
+        tbrList: user.tbrLists
+      }
+    })
+  })
+  .catch((error) => {
+    console.log(error)
+  })
 });
 
 const PORT = process.env.PORT || 3000;

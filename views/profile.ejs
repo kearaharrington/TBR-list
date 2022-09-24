@@ -2,9 +2,20 @@
 
 <h3>Welcome to your PROFILE</h3>
 
-<p>Id: <%= id %></p>
-<p>Name: <%= name %></p>
-<p>Email: <%= email %></p>
+<p>Id: <%= user.id %></p>
+<p>Name: <%= user.name %></p>
+<p>Email: <%= user.email %></p>
 
 <h3>Your Book Lists:</h3>
 <button><a href="tbrLists/new">Add a List</a></button>
+
+<% if(Array.isArray(user.tbrLists) && user.tbrLists.length > 0) { %>
+    <% tbrList.forEach(function(tbrList) { %>
+        <div>
+        <h2>
+            <a href="/tbrLists/<%= tbrList.id %>">
+            <%= tbrList.name %>
+            </a>
+        </h2>
+        </div>
+<% })} %>

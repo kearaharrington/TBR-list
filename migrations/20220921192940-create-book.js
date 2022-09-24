@@ -11,8 +11,8 @@ module.exports = {
       title: {
         type: Sequelize.STRING
       },
-      authorName: {
-        type: Sequelize.STRING
+      authorId: {
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,

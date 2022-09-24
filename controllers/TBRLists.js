@@ -1,17 +1,17 @@
 let express = require('express');
+const isLoggedIn = require('../middleware/isLoggedIn');
 let db = require('../models');
 let router = express.Router();
 
 
 
 // POST route
-router.post('/', (req, res) => {
-    db.TBRList.create({
-        // include: [db.user],
+router.post('/', isLoggedIn, (req,res) => {
+    db.tbrList.create({
         title: req.body.listTitle,
-        // userId: req.
+        userId: req.user.id
     })
-    .then((TBRList) => {
+    .then((tbrList) => {
         res.redirect('tbrLists/:id')
     })
     .catch((error) => {
@@ -19,12 +19,28 @@ router.post('/', (req, res) => {
     });
 })
 
-// GET route for new list
-router.get('/new', (req, res) => {
+// GET route for creating new list
+router.get('/new', isLoggedIn, (req,res) => {
     res.render('tbrLists/new')
-    .catch((error) => {
-        res.status(400).render('main/404')
-    });
+    // .catch((error) => {
+    //     console.log(error)
+    // })
+})
+
+// GET route for list
+router.get('/:id', isLoggedIn, (req,res) => {
+    db.tbrList.findOne({
+        where: {
+            id: parseInt(req.params.id),
+            userId: parseInt(req.user.id)
+        }
+    })
+    .then(tbrList => {
+        res.render('/tbrLists/:id', {tbrList}
+        )})
+        .catch((error) => {
+            console.log(error)
+        })
 })
 
 module.exports = router;
