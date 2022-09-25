@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       models.book.belongsTo(models.author)
       models.book.hasMany(models.bookComment)
-      // models.book.belongsToMany(models.tbrList, { through: 'readingList' })
+      models.book.belongsToMany(models.tbrList, { through: 'bookTbrList' })
     }
   }
   book.init({
@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
     authorId: DataTypes.INTEGER
   }, {
     sequelize,
-    modelName: 'book',
+    modelName: 'book'
   });
   return book;
 };
