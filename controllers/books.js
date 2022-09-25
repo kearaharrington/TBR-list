@@ -3,40 +3,29 @@ const isLoggedIn = require('../middleware/isLoggedIn');
 let db = require('../models');
 let router = express.Router();
 
-// GET route
-router.get('/', isLoggedIn, (req,res) => {
-    db.book.findAll()
-    .then((books) => {
-        res.render('books/index', {books: books})
-    })
-    .catch((error) => {
-        res.status(404).render('404')
-    })
-})
+// // GET route
+// router.get('/', isLoggedIn, (req,res) => {
+//     db.book.findAll()
+//     .then((books) => {
+//         res.render('books/index', {books: books})
+//     })
+//     .catch((error) => {
+//         res.status(404).render('404')
+//     })
+// })
+
 
 // POST route new book
-router.post('/', isLoggedIn, (req, res) => {
+router.post('/', isLoggedIn, (req,res) => {
     db.book.create({
-        title: req.body.bookTitle,
-        author: req.body.authorName
+        title: req.body.title,
+        authorId: parseInt(req.body.authorId)
     })
     .then((book) => {
-        res.redirect('/books/new')
+        res.redirect('profile')
     })
     .catch((error) => {
-        res.status(404).render('404')
-    });
-})
-
-// author POST route
-router.post('/', isLoggedIn, (req, res) => {
-    db.author.create({
-        name: req.body.name
-    })
-    .then((author) => {
-        res.redirect('/books/new')
-    })
-    .catch((error) => {
+        console.log(error);
         res.status(404).render('404')
     });
 })
@@ -51,6 +40,7 @@ router.get('/new', isLoggedIn, (req,res) => {
         res.status(400).render('main/404')
     })
 })
+
 
 // GET route book details
 router.get('/:id', isLoggedIn, (req,res) => {

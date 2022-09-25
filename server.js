@@ -7,6 +7,7 @@ const flash = require('connect-flash');
 const passport = require('./config/ppConfig');
 const isLoggedIn = require('./middleware/isLoggedIn');
 const db = require('./models');
+const methodOverride = require('method-override');
 
 // const HAPIbooks = 'hapi-books.p.rapidapi.com';
 // const HAPIKey = process.env.HAPIBooksKey;
@@ -20,6 +21,7 @@ console.log(SECRET_SESSION);
 app.set('view engine', 'ejs');
 
 app.use(require('morgan')('dev'));
+app.use(methodOverride('_method'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(__dirname + '/public'));
 app.use(layouts);
@@ -52,7 +54,7 @@ app.use('/tbrLists', require('./controllers/tbrLists'));
 app.use('/books', require('./controllers/books'));
 app.use('/authors', require('./controllers/authors'));
 
-app.get('/profile', isLoggedIn, (req, res) => {
+app.get('/profile', isLoggedIn, (req,res) => {
   // const { id, name, email } = req.user.get(); 
   db.user.findOne({
     where: {

@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       models.tbrList.belongsTo(models.user)
-      models.tbrList.hasMany(models.book)
+      // models.tbrList.hasMany(models.book)
     }
   }
   tbrList.init({

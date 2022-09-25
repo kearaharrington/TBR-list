@@ -2,12 +2,12 @@
 
 <form action="/books" method="POST">
     <div>
-        <label for="bookTitle">Title:</label> 
-        <input type="text" id="bookTitle" name="bookTitle" required>
+        <label for="title">Title:</label> 
+        <input type="text" id="title" name="title" required>
     </div>
     <div>
         <label for="authorName">Author:</label>
-        <select id="authorName" name="authorName" required>
+        <select id="authorName" name="authorId" required>
             <% authors.forEach(function(author){ %>
                <option value="<%= author.id %>"> <%= author.name %></option>
             <% }) %>
@@ -15,13 +15,3 @@
     </div>
     <input type="submit">
 </form>
-
-<!-- <h2>Add a New Author:</h2>
-
-<form action="/authors" method="POST"></form>
-    <div>
-        <label for="name">Author:</label>
-        <input type="text" id="name" name="name" required>
-    </div>
-    <input type="submit">
-</form> -->

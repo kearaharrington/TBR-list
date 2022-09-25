@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       models.book.belongsTo(models.author)
       models.book.hasMany(models.bookComment)
+      // models.book.belongsToMany(models.tbrList, { through: 'readingList' })
     }
   }
   book.init({

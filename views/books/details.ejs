@@ -1,11 +1,11 @@
-    <div>
-    <h1><%= book.title %></h1>
-      <h2>
-        <a href="/authors/<%=book.author.id%>"></a>
-          <%= book.author.name %>
-        </a>
-      </h2>
-    </div>
+<div>
+  <h1><%= book.title %></h1>
+    <h2>
+      <a href="/authors/<%=book.author.id%>"></a>
+        <%= book.author.name %>
+      </a>
+    </h2>
+</div>
 
 <% if(Array.isArray(book.bookComments) && book.bookComments.length > 0) { %>
   <% book.bookComments.forEach(function(bookComment) { %>
