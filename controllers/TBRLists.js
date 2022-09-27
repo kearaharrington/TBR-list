@@ -11,7 +11,6 @@ router.post('/', isLoggedIn, (req,res) => {
     db.tbrList.create({
         name: req.body.name,
         userId: req.user.id,
-        // include: [db.bookTbrList]
     })
     .then((tbrList) => {
         res.redirect('profile')
@@ -38,14 +37,16 @@ router.get('/:id', isLoggedIn, (req,res) => {
         },
         include: [{
             model: db.book,
-            through: db.bookTbrList
+            through: db.bookTbrList,
+            include: [db.author] // need to access author names
         }]
     })
     .then((tbrList) => {
         res.render('tbrLists/show', {
             tbrList: {
                 tbrList,
-                books: tbrList.books
+                books: tbrList.books,
+                authors: tbrList.books.authors // acess authors
             }
         })
     })

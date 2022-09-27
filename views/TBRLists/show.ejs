@@ -1,3 +1,16 @@
 <h1><%= tbrList.tbrList.name %></h1>
 
+<% tbrList.books.forEach(function(book) { %>
+    <div>
+      <h2>
+        <a href="/books/<%= book.id %>">
+          <%= book.title %>
+        </a>
+      </h2>
+      <h3>
+        <%= book.author.name %>
+      </h3>
+    </div>
+  <% }) %>
+
 <button><a href="/tbrLists/<%= tbrList.tbrList.id %>/add">Add to Your List</a></button>
