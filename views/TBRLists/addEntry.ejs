@@ -1,0 +1,13 @@
+<h2>Add to Your List:</h2>
+
+<form action="/tbrLists/<%= tbrList.id %>/add" method="POST">
+    <div>
+        <label for="bookTitle">Book:</label>
+        <select id="bookTitle" name="bookId" required>
+            <% books.forEach(function(book){ %>
+               <option value="<%= book.id %>"> <%= book.title %></option>
+            <% }) %>
+       </select>
+    </div>
+    <input type="submit">
+</form>

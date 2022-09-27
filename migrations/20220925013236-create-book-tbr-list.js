@@ -12,6 +12,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: {
           model: 'tbrLists',
+          as: 'tbrListId',
           key: 'id'
         }
       },
@@ -19,6 +20,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: {
           model: 'books',
+          as: 'bookId',
           key: 'id'
         }
       },

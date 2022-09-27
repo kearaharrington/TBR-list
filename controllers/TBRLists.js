@@ -1,5 +1,6 @@
 let express = require('express');
 const isLoggedIn = require('../middleware/isLoggedIn');
+const { sequelize } = require('../models');
 let db = require('../models');
 let router = express.Router();
 
@@ -9,7 +10,8 @@ let router = express.Router();
 router.post('/', isLoggedIn, (req,res) => {
     db.tbrList.create({
         name: req.body.name,
-        userId: req.user.id
+        userId: req.user.id,
+        // include: [db.bookTbrList]
     })
     .then((tbrList) => {
         res.redirect('profile')
@@ -31,16 +33,65 @@ router.get('/new', isLoggedIn, (req,res) => {
 router.get('/:id', isLoggedIn, (req,res) => {
     db.tbrList.findOne({
         where: {
-            id: parseInt(req.params.id),
-            userId: parseInt(req.user.id)
-        }
+            id: req.params.id,
+            userId: req.user.id
+        },
+        include: [{
+            model: db.book,
+            through: db.bookTbrList
+        }]
     })
-    .then(tbrList => {
-        res.render('tbrLists/show', {tbrList}
-        )})
-        .catch((error) => {
-            console.log(error)
+    .then((tbrList) => {
+        res.render('tbrLists/show', {
+            tbrList: {
+                tbrList,
+                books: tbrList.books
+            }
         })
+    })
+    .catch((error) => {
+        console.log(error)
+        res.status(400).render('404')
+    })
+})
+
+// GET route for adding to list
+router.get('/:id/add', isLoggedIn, (req,res) => {
+    db.book.findAll()
+    .then(db.tbrList.findOne({
+        where: {
+            id: req.params.id
+        }
+    }))
+    .then((books, tbrList) => {
+        // res.render('tbrLists/addEntry', {
+        //     books: {
+        //         books,
+        //         tbrLists: tbrList
+        //     }
+        // })
+        res.render('tbrLists/addEntry', {books, tbrList: {id: req.params.id}})
+    })
+    .catch((error) => {
+        console.log(error)
+        res.status(400).render('404')
+    })
+})
+
+// POST route for adding to list 
+router.post('/:id/add', isLoggedIn, (req,res) => {
+    db.bookTbrList.create({ 
+        tbrListId: req.params.id,
+        bookId: parseInt(req.body.bookId)
+        // include: [db.book, db.tbrList]
+    })
+    .then(bookTbrList => {
+        res.redirect(`/tbrLists/${req.params.id}`)
+    })
+    .catch((error) => {
+        console.log(error)
+        res.status(400).render('404')
+    })
 })
 
 module.exports = router;
