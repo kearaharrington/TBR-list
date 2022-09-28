@@ -62,40 +62,40 @@ router.get('/:id', isLoggedIn, (req,res) => {
     })
 })
 
-// POST route for book comments NOT WORKING
-router.post('/id:/comment', isLoggedIn, (req,res) => {
-    db.bookComment.create({
-        content: req.body.content,
-        userId: req.user.id,
-        bookId: req.params.id,
-        include: [db.book, db.user]
-    })
-    // db.book.findOne({
-    //     where: {
-    //         id: req.params.id
-    //     }
-    // })
-    // .then((book) => {
-    //     db.bookComment.create({
-    //         content: req.body.content,
-    //         userId: req.user.id,
-    //         bookId: book.id
-    //     })
-    //     .then((bookComment) => {
-    //         res.redirect(`/books/${req.params.id}`)
-    //     })
-    //     .catch((error) => {
-    //         console.log(error);
-    //         res.status(400).render('main/404')
-    //     })
-    // })
-    .then(bookComment => {
-        res.redirect(`/books/${req.params.id}`)
-    })
-    .catch((error) => {
-        console.log(error)
-        res.status(400).render('404')
-    })
-})
+// // POST route for book comments NOT WORKING
+// router.post('/id:/comment', isLoggedIn, (req,res) => {
+//     db.bookComment.create({
+//         content: req.body.content,
+//         userId: req.user.id,
+//         bookId: req.params.id,
+//         include: [db.book, db.user]
+//     })
+//     // db.book.findOne({
+//     //     where: {
+//     //         id: req.params.id
+//     //     }
+//     // })
+//     // .then((book) => {
+//     //     db.bookComment.create({
+//     //         content: req.body.content,
+//     //         userId: req.user.id,
+//     //         bookId: book.id
+//     //     })
+//     //     .then((bookComment) => {
+//     //         res.redirect(`/books/${req.params.id}`)
+//     //     })
+//     //     .catch((error) => {
+//     //         console.log(error);
+//     //         res.status(400).render('main/404')
+//     //     })
+//     // })
+//     .then(bookComment => {
+//         res.redirect(`/books/${req.params.id}`)
+//     })
+//     .catch((error) => {
+//         console.log(error)
+//         res.status(400).render('404')
+//     })
+// })
 
 module.exports = router;

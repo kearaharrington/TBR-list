@@ -89,21 +89,21 @@ router.post('/:id/add', isLoggedIn, (req,res) => {
     })
 })
 
-// DELETE route for removing books from tbrList
-router.delete('/:id/remove', isLoggedIn, (req,res) => {
-    db.bookTbrList.findOneAndDelete({ 
-        where: {
-            tbrListId: req.params.id,
-            bookId: req.body.bookId
-        }
-    })
-    .then(
-        res.redirect(`/tbrLists/${req.params.id}`)
-    )
-    .catch((error) => {
-        console.log(error)
-        res.status(400).render('404')
-    })
-})
+// // DELETE route for removing books from tbrList NOT WORKING
+// router.delete('/:id/remove', isLoggedIn, (req,res) => {
+//     db.bookTbrList.findOneAndDelete({ 
+//         where: {
+//             tbrListId: req.params.id,
+//             bookId: req.body.bookId
+//         }
+//     })
+//     .then(
+//         res.redirect(`/tbrLists/${req.params.id}`)
+//     )
+//     .catch((error) => {
+//         console.log(error)
+//         res.status(400).render('404')
+//     })
+// })
 
 module.exports = router;
