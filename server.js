@@ -50,7 +50,7 @@ app.get('/', (req, res) => {
 
 // access to all of our auth routes GET /auth/login, GET /auth/signup, POST routes
 app.use('/auth', require('./controllers/auth'));
-app.use('/tbrLists', require('./controllers/lists'));
+app.use('/tbrLists', require('./controllers/tbrLists'));
 app.use('/books', require('./controllers/books'));
 app.use('/authors', require('./controllers/authors'));
 
