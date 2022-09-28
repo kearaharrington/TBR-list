@@ -73,6 +73,7 @@ app.get('/profile', isLoggedIn, (req,res) => {
   })
   .catch((error) => {
     console.log(error)
+    res.status(404).render('404')
   })
 });
 

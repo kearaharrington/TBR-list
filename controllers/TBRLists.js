@@ -16,7 +16,8 @@ router.post('/', isLoggedIn, (req,res) => {
         res.redirect('profile')
     })
     .catch((error) => {
-        res.status(400).render('main/404')
+        console.log(error)
+        res.status(400).render('404')
     });
 })
 
