@@ -65,12 +65,6 @@ router.get('/:id/add', isLoggedIn, (req,res) => {
         }
     }))
     .then((books, tbrList) => {
-        // res.render('tbrLists/addEntry', {
-        //     books: {
-        //         books,
-        //         tbrLists: tbrList
-        //     }
-        // })
         res.render('tbrLists/addEntry', {books, tbrList: {id: req.params.id}})
     })
     .catch((error) => {
@@ -79,16 +73,32 @@ router.get('/:id/add', isLoggedIn, (req,res) => {
     })
 })
 
-// POST route for adding to list 
+// POST route for adding books to tbrList 
 router.post('/:id/add', isLoggedIn, (req,res) => {
-    db.bookTbrList.create({ 
+    db.bookTbrList.create({ // this allows you to add same book multiple times, need to add if statement
         tbrListId: req.params.id,
         bookId: parseInt(req.body.bookId)
-        // include: [db.book, db.tbrList]
     })
     .then(bookTbrList => {
         res.redirect(`/tbrLists/${req.params.id}`)
     })
+    .catch((error) => {
+        console.log(error)
+        res.status(400).render('404')
+    })
+})
+
+// DELETE route for removing books from tbrList
+router.delete('/:id/remove', isLoggedIn, (req,res) => {
+    db.bookTbrList.findOneAndDelete({ 
+        where: {
+            tbrListId: req.params.id,
+            bookId: req.body.bookId
+        }
+    })
+    .then(
+        res.redirect(`/tbrLists/${req.params.id}`)
+    )
     .catch((error) => {
         console.log(error)
         res.status(400).render('404')

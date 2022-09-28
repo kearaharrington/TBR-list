@@ -1,16 +1,28 @@
+<div class="page-alignment">
+
 <h1><%= tbrList.tbrList.name %></h1>
+<ol type="1">
+    <% tbrList.books.forEach(function(book) { %>
+        <li>
+            <h2>
+                <a href="/books/<%= book.id %>">
+                <%= book.title %>
+                </a>
+            </h2>
+            <h3>
+                By <%= book.author.name %>
+            </h3>
+            <!-- below form is not functional yet -->
+            <form action="/books/<%= book.id %>/remove" method="DELETE">
+                <label for="bookId"></label>
+                <input type="submit" name="bookId" value="<% book.id %>"> 
+            </form>
+        </li>
+        <% }) %>
+</ol>
 
-<% tbrList.books.forEach(function(book) { %>
-    <div>
-      <h2>
-        <a href="/books/<%= book.id %>">
-          <%= book.title %>
-        </a>
-      </h2>
-      <h3>
-        <%= book.author.name %>
-      </h3>
-    </div>
-  <% }) %>
+<form action="/tbrLists/<%= tbrList.tbrList.id %>/add" method="GET">
+    <input type="submit" value="Add to Your List">
+</form>
 
-<button><a href="/tbrLists/<%= tbrList.tbrList.id %>/add">Add to Your List</a></button>
+</div>

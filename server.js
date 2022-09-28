@@ -54,6 +54,7 @@ app.use('/tbrLists', require('./controllers/tbrLists'));
 app.use('/books', require('./controllers/books'));
 app.use('/authors', require('./controllers/authors'));
 
+// display user details and tbrLists
 app.get('/profile', isLoggedIn, (req,res) => {
   // const { id, name, email } = req.user.get(); 
   db.user.findOne({
@@ -74,6 +75,7 @@ app.get('/profile', isLoggedIn, (req,res) => {
     console.log(error)
   })
 });
+
 
 const PORT = process.env.PORT || 3000;
 const server = app.listen(PORT, () => {

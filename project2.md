@@ -48,8 +48,8 @@ Make a PR when you're done!
 ### FUNDAMENTALS
 - [ ] Deployed (e.g. Heroku)
 - [ ] Site has basic functionality related to its goal
-- [ ] At least 2 GET routes (other than auth)
-- [ ] At least 1 POST route
+- [X] At least 2 GET routes (other than auth)
+- [X] At least 1 POST route
 - [ ] At least 1 DELETE route
 - [ ] At least 1 PUT route
 ```
@@ -58,7 +58,7 @@ Make a PR when you're done!
 ```
 ### SUFFICIENT DIFFICULTY: At least 1 of the following: 
 - [ ] Use of an API
-- [ ] Advanced Database Relationships
+- [X] Advanced Database Relationships
 - [ ] Sockets
 - [ ] Scraping
 - [ ] OAuth
@@ -69,11 +69,11 @@ Make a PR when you're done!
 
 ```
 ### AUTH/SECURITY (Mostly From Template Boilerplate)
-- [ ] Log in works (required: boilerplate or better)
-- [ ] Sensible error messages for bad login info  (boilerplate or better)
-- [ ] Passwords hashed in database
-- [ ] Passwords in form are input type="password" (dots)
-- [ ] Password verification is checked
+- [X] Log in works (required: boilerplate or better)
+- [X] Sensible error messages for bad login info  (boilerplate or better)
+- [X] Passwords hashed in database
+- [X] Passwords in form are input type="password" (dots)
+- [X] Password verification is checked
 - [ ] Can't sneak edit/delete data that I don't own by typing in random ids
 ```
 `card` GITHUB USAGE
@@ -81,28 +81,28 @@ Make a PR when you're done!
 ### GITHUB USAGE
 - [ ] Appropriate Use of Github
 - [ ] `README` is included and is descriptive
-- [ ] `.gitignore` properly set up
-- [ ] No API keys in Github code (used a .env file)
+- [X] `.gitignore` properly set up
+- [X] No API keys in Github code (used a .env file)
 - [ ] Multiple commits per day
-- [ ] Repo up on day 1 of project week or sooner
+- [X] Repo up on day 1 of project week or sooner
 - [ ] `README` has *Installation Instructions*
 ```
 
 `card` DATABASE USAGE
 ```
 ### DATABASE USAGE
-- [ ] At least 2 Models other than join tables (required)
-- [ ] Relationships were set up appropriately between models
-- [ ] Avoided global variables, storing data in files, etc
-- [ ] No raw file/image data stored in database, etc
+- [X] At least 2 Models other than join tables (required)
+- [X] Relationships were set up appropriately between models
+- [X] Avoided global variables, storing data in files, etc
+- [X] No raw file/image data stored in database, etc
 ```
 
 `card` CODE STYLE
 ```
 ### CODE STYLE
 - [ ] Generally DRY code / No enormous files
-- [ ] Proper indentation (or mostly pretty good!)
-- [ ] Naming conventions kept
+- [X] Proper indentation (or mostly pretty good!)
+- [X] Naming conventions kept
 - [ ] No glaring logic errors
 ```
 `card` USER EXPERIENCE
@@ -110,7 +110,7 @@ Make a PR when you're done!
 ### USER EXPERIENCE
 - [ ] Effort was put into design
 - [ ] No broken links (server errors or 404s)
-- [ ] Typing a purposely bad link renders an error ejs page
+- [X] Typing a purposely bad link renders an error ejs page
 - [ ] Content is responsive to screen size changes
 - [ ] No glaring alignment or grid errors
 ```

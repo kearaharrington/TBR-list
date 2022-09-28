@@ -1,9 +1,40 @@
-nav ul li {
+/* nav ul li {
   text-decoration: none;
-  display: inline-block;
+  display: inline;
   margin-right: .3em;
+} */
+
+.page-alignment {
+  text-align: center;
+}
+
+#stack-of-books {
+  max-width: 800px;
+  height: auto;
+}
+
+.menu-bar {
+  position: sticky;
+  width: 100%;
+  text-align: center;
+  background-color: grey;
+}
+
+.menu-bar li {
+  display: flex;
+  display: inline;
+  margin: 0 auto;
+  padding: 30px 50px;
+}
+
+.menu-bar li a {
+  color: white;
+}
+
+a {
+  text-decoration: none;
 }
 
 h1 {
-  color: chartreuse;
+  color: green;
 }
