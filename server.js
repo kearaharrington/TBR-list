@@ -75,12 +75,51 @@ app.get('/profile', isLoggedIn, (req,res) => {
     console.log(error)
     res.status(404).render('404')
   })
-});
+})
+
+app.get('/edit', isLoggedIn, (req,res) => {
+  db.user.findOne({
+    where: {
+      id: req.user.id
+    }
+  })
+  .then((user) => {
+    if(!user) throw Error();
+    res.render('auth/edit', {user})
+  })
+  .catch((error) => {
+    console.log(error)
+    res.status(404).render('404')
+  })
+})
+
+app.put('/edit', isLoggedIn, (req,res) => {
+  db.user.update({
+      name: req.body.name,
+      email: req.body.email
+    },
+    {where: {
+      id: req.user.id
+    }
+  })
+  .then((user) => {
+    res.redirect('/profile')
+  })
+  .catch((error) => {
+    console.log(error)
+    res.status(404).render('404')
+  })
+})
+
+app.get('/*', (req,res) => {
+  res.status(404).render('404')
+})
 
 
 const PORT = process.env.PORT || 3000;
-const server = app.listen(PORT, () => {
-  console.log(`🎧 You're listening to the smooth sounds of port ${PORT} 🎧`);
-});
+// const server = app.listen(PORT, () => {
+//   console.log(`🎧 You're listening to the smooth sounds of port ${PORT} 🎧`);
+// })
+const server = app.listen(PORT)
 
 module.exports = server;

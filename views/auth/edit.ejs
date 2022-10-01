@@ -1,0 +1,11 @@
+<h2>Edit Profile</h2>
+
+<form action="/edit/?_method=PUT" method="POST">
+    <label for="edit-email">Email</label>
+    <input id="edit-email" type="email" name="email" value="<%= user.email %>" required>
+    <input type="submit" value="Submit">
+    <br>
+    <label for="edit-name">Name</label>
+    <input id="edit-name" type="text" name="name" value="<%= user.name %>" required>
+    <input type="submit" value="Submit">
+</form>

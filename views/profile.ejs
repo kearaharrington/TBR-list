@@ -1,8 +1,11 @@
-    <h2><%= user.user.name %>'s Profile Page</h2>
-    <p>User ID: <%= user.user.id %></p>
-    <p>Email Address: <%= user.user.email %></p>
+<h2><%= user.user.name %>'s Profile Page</h2>
+<p>User ID: <%= user.user.id %></p>
+<p>Email Address: <%= user.user.email %></p>
+<form action="/edit" method="GET">
+    <input type="submit" value="Edit Your Profile">
+</form>
 
-    <h2>Your Book Lists:</h2>
+<h2>Your Book Lists:</h2>
     <ol type="1">
     <% if(user.user.tbrLists) { %>
         <% user.user.tbrLists.forEach(function(list) { %>
