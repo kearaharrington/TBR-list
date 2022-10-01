@@ -186,6 +186,16 @@ Static Associations:
 `1` `fork` and `clone` repository
 `2` navigate to folder for project and enter `npm install` in terminal
 `3` enter `sequelize db:migrate` in terminal
+`4` create a `.env` file SECRET_SESSION set to equal whatever you want your secret to be:
+```
+SECRET_SESSION=
+```
+`5` make sure you have a `.gitignore` file that includes the following:
+```
+.env
+node_modules
+package-lock.json
+```
 
 ## Future plans
 Use API to pull book covers. Add comments to book details pages.
