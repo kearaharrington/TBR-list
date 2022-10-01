@@ -12,10 +12,8 @@
             <h3>
                 By <%= book.author.name %>
             </h3>
-            <!-- below form is not functional yet -->
-            <form action="/books/<%= book.id %>/remove" method="DELETE">
-                <label for="bookId"></label>
-                <input type="submit" name="bookId" value="<% book.id %>"> 
+            <form action="/tbrLists/<%= tbrList.tbrList.id %>/remove/?_method=DELETE" method="POST">
+                <button type="submit" name="bookId" value="<%= book.id %>">Remove</button>
             </form>
         </li>
         <% }) %>
