@@ -71,3 +71,13 @@ From server.js
 const kindleScraper = 'amazon-kindle-scraper.p.rapidapi.com';
 const kindleKey = process.env.ksAPIKey;
 ```
+
+user static association
+```javascript
+models.user.hasMany(models.bookComment)
+```
+
+book static association
+```javascript
+models.book.hasMany(models.bookComment)
+```
