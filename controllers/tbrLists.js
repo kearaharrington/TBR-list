@@ -6,7 +6,7 @@ let router = express.Router();
 
 
 
-// POST route
+// POST route show all books
 router.post('/', isLoggedIn, (req,res) => {
     db.tbrList.create({
         name: req.body.name,
@@ -24,9 +24,10 @@ router.post('/', isLoggedIn, (req,res) => {
 // GET route for creating new list
 router.get('/new', isLoggedIn, (req,res) => {
     res.render('tbrLists/new')
-    // .catch((error) => {
-    //     console.log(error)
-    // })
+    .catch((error) => {
+        console.log(error)
+        res.status(400).render('404')
+    })
 })
 
 // GET route for list
@@ -89,7 +90,7 @@ router.post('/:id/add', isLoggedIn, (req,res) => {
     })
 })
 
-// DELETE route for removing books from tbrList NOT WORKING
+// DELETE route for removing books from tbrList
 router.delete('/:id/remove', isLoggedIn, async (req,res) => {
     let bookDeleted = await db.bookTbrList.destroy({
         where: {

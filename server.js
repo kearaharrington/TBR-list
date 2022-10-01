@@ -9,12 +9,6 @@ const isLoggedIn = require('./middleware/isLoggedIn');
 const db = require('./models');
 const methodOverride = require('method-override');
 
-// const HAPIbooks = 'hapi-books.p.rapidapi.com';
-// const HAPIKey = process.env.HAPIBooksKey;
-
-const kindleScraper = 'amazon-kindle-scraper.p.rapidapi.com';
-const kindleKey = process.env.ksAPIKey;
-
 const SECRET_SESSION = process.env.SECRET_SESSION;
 console.log(SECRET_SESSION);
 

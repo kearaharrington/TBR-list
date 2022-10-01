@@ -6,20 +6,3 @@
       </a>
     </h2>
 </div>
-
-<% if(Array.isArray(book.bookComments) && book.bookComments.length > 0) { %>
-  <% book.bookComments.forEach(function(bookComment) { %>
-      <p>
-          <%= bookComment.user.name %>
-          <%= bookComment.content %>
-      </p>
-<% })} %>
-
-<div class="comments">
-  <form action="/books/<%= book.id %>/comment" method="POST" >
-    <label for="content">Comment</label>
-    <input name="content" type="text">
-    <!-- <button type="submit">Submit</button> -->
-    <input type="submit">
-  </form>
-</div>

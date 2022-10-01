@@ -4,7 +4,7 @@
 Createa a user profile and make a reading list by entering authors and books into the database or by making a selection from what's already been entered.
 
 ## ERD:
-![plot](tbrListErd.png)
+![ERD](tbrListErd.png)
 
 ## Wireframes:
 
