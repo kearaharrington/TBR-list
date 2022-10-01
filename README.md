@@ -183,10 +183,11 @@ Static Associations:
 ```
 
 ## Installation Instructions:
-`1` `fork` and `clone` repository
-`2` navigate to folder for project and enter `npm install` in terminal
-`3` enter `sequelize db:migrate` in terminal
-`4` create a `.env` file SECRET_SESSION set to equal whatever you want your secret to be:
+Instructions assume you are using postgres for your database.
+`1` `git clone` repository
+`2` `cd TBR-list`
+`3` `npm install`
+`4` `touch .env` and enter SECRET_SESSION set to equal whatever you want your secret to be:
 ```
 SECRET_SESSION=
 ```
@@ -196,6 +197,10 @@ SECRET_SESSION=
 node_modules
 package-lock.json
 ```
+`6` `createdb booklist-app` or `sequelize db:create booklist-app`
+`7` `sequelize db:migrate` in terminal
+`8` `npm start`
+
 
 ## Future plans
 Use API to pull book covers. Add comments to book details pages.
